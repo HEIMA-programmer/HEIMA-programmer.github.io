@@ -1,0 +1,36 @@
+---
+layout: default
+title: "Research Log"
+---
+
+<div class="blog-page">
+  <h1>
+    <span lang-en>Research Log</span>
+    <span lang-cn>科研日志</span>
+  </h1>
+  <p class="subtitle">
+    <span lang-en>Notes on research progress, paper reading, and reflections.</span>
+    <span lang-cn>记录科研进度、论文阅读与思考感悟。</span>
+  </p>
+
+  <ul class="blog-list">
+    {% for post in site.posts %}
+    <li class="blog-entry">
+      <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      <div>
+        <div class="entry-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+        {% if post.excerpt %}
+        <div class="entry-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if site.posts.size == 0 %}
+  <p style="color:var(--muted); margin-top:2rem;">
+    <span lang-en>No posts yet. Add your first post to <code>_posts/</code>!</span>
+    <span lang-cn>还没有日志，去 <code>_posts/</code> 目录添加第一篇吧！</span>
+  </p>
+  {% endif %}
+</div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="{{ '/' | relative_url }}">Yanbin Xu</a>
+    <div class="nav-right">
+      <a href="{{ '/' | relative_url }}">
+        <span lang-en>Home</span><span lang-cn>首页</span>
+      </a>
+      <a href="{{ '/#publications' | relative_url }}">
+        <span lang-en>Publications</span><span lang-cn>论文</span>
+      </a>
+      <a href="{{ '/blog' | relative_url }}">
+        <span lang-en>Log</span><span lang-cn>日志</span>
+      </a>
+      <a href="{{ '/#contact' | relative_url }}">
+        <span lang-en>Contact</span><span lang-cn>联系</span>
+      </a>
+      <a class="lang-btn" href="javascript:void(0)" onclick="toggleLang()" id="langToggle">中文</a>
+    </div>
+  </div>
+</nav>
+
+{{ content }}
+
+<footer>
+  © {{ site.time | date: "%Y" }} Yanbin Xu · Central South University · Powered by Jekyll & GitHub Pages
+</footer>
+
+<script>
+function toggleLang() {
+  document.body.classList.toggle('zh');
+  var btn = document.getElementById('langToggle');
+  btn.textContent = document.body.classList.contains('zh') ? 'EN' : '中文';
+  try { localStorage.setItem('lang', document.body.classList.contains('zh') ? 'zh' : 'en'); } catch(e) {}
+}
+try {
+  if (localStorage.getItem('lang') === 'zh') {
+    document.body.classList.add('zh');
+    document.getElementById('langToggle').textContent = 'EN';
+  }
+} catch(e) {}
+</script>
+
+</body>
+</html>
