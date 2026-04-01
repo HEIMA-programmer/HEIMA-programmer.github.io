@@ -57,8 +57,17 @@ layout: default
     {% endif %}
   </article>
   <div class="post-follow">
-    <span lang-en>Enjoyed this post? <a href="https://follow.it/yanbin-xu?leanpub" target="_blank" rel="noopener">Subscribe</a> to get notified of new updates.</span>
-    <span lang-cn>觉得有帮助？<a href="https://follow.it/yanbin-xu?leanpub" target="_blank" rel="noopener">订阅</a>以获取更新通知。</span>
+    <p class="subscribe-text">
+      <span lang-en>Get notified when I post new research updates.</span>
+      <span lang-cn>订阅以获取最新科研动态。</span>
+    </p>
+    <form class="follow-form" action="https://api.follow.it/subscription-form/ZVYydktLQ2RUTDRKRlY3MWxaZWVDRk9FYmV4bktTaXBoSFk1QTU0TFpsRlRIYWlXZWs0OUtWdEpMQTdIMU8rODl0SHJ2YUovYktLZEJaa2JGT055NmNCS3pacy9XNEtkYWJOaGIrUHdzbnpTRFowKy9vSU9nelBOcEdnZ3FQenh8T05pRVhBN3dQcTc5SWtVeVk0KzU0d09XVlNwazhTeCtZMHdSM1kreWx1QT0=/8" method="post">
+      <input class="follow-input" type="email" name="email" placeholder="your@email.com" required />
+      <button class="follow-btn" type="submit">
+        <span lang-en>Subscribe</span>
+        <span lang-cn>订阅</span>
+      </button>
+    </form>
   </div>
   <div class="post-nav">
     <a href="{{ '/blog' | relative_url }}">

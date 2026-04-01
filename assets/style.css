@@ -428,9 +428,13 @@ h2 {
 .post-follow {
   margin-top: 2rem; padding-top: 1rem;
   border-top: 1px solid var(--border);
-  font-size: 0.85rem; color: var(--muted);
 }
-.post-follow a { color: var(--accent); font-weight: 500; }
+
+.subscribe-section { margin-top: 1.5rem; }
+
+.subscribe-text {
+  font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;
+}
 
 .post-nav {
   margin-top: 1rem; padding-top: 1.2rem;
