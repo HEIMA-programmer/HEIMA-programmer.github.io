@@ -127,12 +127,34 @@ title: "Yanbin Xu · Personal Academic Homepage"
 
   <!-- Blog Preview -->
   <section id="log">
+    {% assign exp_posts = site.posts | where: "category", "experience" %}
+    {% if exp_posts.size > 0 %}
+    <h2>
+      <span lang-en>Research Experience</span>
+      <span lang-cn>科研经验</span>
+    </h2>
+    <ul class="blog-list">
+      {% for post in exp_posts limit:3 %}
+      <li class="blog-entry experience-entry">
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <div>
+          <div class="entry-title">
+            <span class="pin-icon">&#9733;</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     <h2>
       <span lang-en>Research Log</span>
       <span lang-cn>科研日志</span>
     </h2>
+    {% assign daily = site.posts | where_exp: "p", "p.category != 'experience' and p.parent == nil" %}
     <ul class="blog-list">
-      {% for post in site.posts limit:5 %}
+      {% for post in daily limit:5 %}
       <li class="blog-entry">
         <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <div>

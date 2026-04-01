@@ -432,6 +432,85 @@ h2 {
 .post-nav a { font-size: 0.88rem; color: var(--muted); }
 .post-nav a:hover { color: var(--accent); }
 
+/* ── Log Sections ── */
+.log-section { margin-bottom: 2.5rem; }
+
+.section-heading {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--ink);
+  margin-bottom: 0.8rem; padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+  display: inline-block;
+}
+
+/* ── Experience (Pinned) Entries ── */
+.experience-entry {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.8rem; margin-left: 0;
+}
+
+.pin-icon {
+  color: var(--accent); font-size: 0.8rem; margin-right: 0.3rem;
+}
+
+/* ── Child Entries ── */
+.child-list {
+  list-style: none; margin-top: 0.5rem;
+  padding-left: 1.2rem; border-left: 2px solid var(--border-light);
+}
+
+.child-entry { padding: 0.4rem 0; border-bottom: none; }
+.child-entry .date { font-size: 0.7rem; }
+.child-entry .entry-title { font-size: 0.92rem; }
+
+.child-count {
+  font-size: 0.75rem; color: var(--muted);
+  font-weight: 400; margin-left: 0.3rem;
+}
+
+/* ── Details/Summary Toggle ── */
+.children-toggle { margin-top: 0.4rem; }
+
+.children-toggle summary {
+  font-size: 0.8rem; color: var(--accent);
+  cursor: pointer; list-style: none; font-weight: 500;
+}
+.children-toggle summary::-webkit-details-marker { display: none; }
+.children-toggle summary::before { content: '\25B8  '; }
+.children-toggle[open] summary::before { content: '\25BE  '; }
+
+/* ── Post Layout Additions ── */
+.post-parent-link {
+  font-size: 0.84rem; color: var(--muted); margin-bottom: 0.5rem;
+}
+.post-parent-link a { color: var(--accent); font-weight: 500; }
+
+.post-category-badge {
+  display: inline-block; font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.12rem 0.45rem; border-radius: 2px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent); border: 1px solid var(--accent);
+  vertical-align: middle; margin-right: 0.5rem;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.post-children {
+  margin-top: 2rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.post-children h3 {
+  font-size: 1rem; margin-bottom: 0.6rem; color: var(--ink);
+}
+.post-children .child-list { border-left: none; padding-left: 0; }
+.post-children .child-list li {
+  padding: 0.3rem 0; display: flex; gap: 0.8rem; align-items: baseline;
+}
+.post-children .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--muted);
+}
+
 /* ══ Footer ══ */
 footer {
   max-width: 860px; margin: 0 auto; padding: 1.5rem 2rem;

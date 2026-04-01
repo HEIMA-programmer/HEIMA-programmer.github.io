@@ -13,21 +13,83 @@ title: "Research Log"
     <span lang-cn>记录科研进度、论文阅读与思考感悟。</span>
   </p>
 
-  <ul class="blog-list">
-    {% for post in site.posts %}
-    <li class="blog-entry">
-      <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      <div>
-        <div class="entry-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
-        {% if post.excerpt %}
-        <div class="entry-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
-        {% endif %}
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
+  <!-- ═══ Section 1: Experience Posts (Pinned) ═══ -->
+  {% assign experience_posts = site.posts | where: "category", "experience" %}
+  {% if experience_posts.size > 0 %}
+  <div class="log-section">
+    <h2 class="section-heading">
+      <span lang-en>Research Experience</span>
+      <span lang-cn>科研经验</span>
+    </h2>
+    <ul class="blog-list experience-list">
+      {% for post in experience_posts %}
+      <li class="blog-entry experience-entry">
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <div>
+          <div class="entry-title">
+            <span class="pin-icon">&#9733;</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </div>
+          {% if post.excerpt %}
+          <div class="entry-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 
-  {% if site.posts.size == 0 %}
+  <!-- ═══ Section 2: Daily Research Logs ═══ -->
+  {% assign daily_parents = site.posts | where_exp: "post", "post.category != 'experience' and post.parent == nil" %}
+  <div class="log-section">
+    <h2 class="section-heading">
+      <span lang-en>Daily Research Log</span>
+      <span lang-cn>日常科研日志</span>
+    </h2>
+    {% if daily_parents.size > 0 %}
+    <ul class="blog-list daily-list">
+      {% for post in daily_parents %}
+      {% assign parent_id = post.date | date: "%Y-%m-%d" | append: "-" | append: post.slug %}
+      {% assign children = site.posts | where: "parent", parent_id %}
+      <li class="blog-entry parent-entry">
+        <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <div>
+          <div class="entry-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% if children.size > 0 %}
+            <span class="child-count">({{ children.size }})</span>
+            {% endif %}
+          </div>
+          {% if post.excerpt %}
+          <div class="entry-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</div>
+          {% endif %}
+          {% if children.size > 0 %}
+          <details class="children-toggle">
+            <summary class="toggle-label">
+              <span lang-en>{{ children.size }} sub-entries</span>
+              <span lang-cn>{{ children.size }} 条子日志</span>
+            </summary>
+            <ul class="child-list">
+              {% for child in children %}
+              <li class="blog-entry child-entry">
+                <span class="date">{{ child.date | date: "%Y-%m-%d" }}</span>
+                <div>
+                  <div class="entry-title"><a href="{{ child.url | relative_url }}">{{ child.title }}</a></div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </details>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  {% if experience_posts.size == 0 and daily_parents.size == 0 %}
   <p style="color:var(--muted); margin-top:2rem;">
     <span lang-en>No posts yet. Add your first post to <code>_posts/</code>!</span>
     <span lang-cn>还没有日志，去 <code>_posts/</code> 目录添加第一篇吧！</span>

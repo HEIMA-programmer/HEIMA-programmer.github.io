@@ -4,8 +4,27 @@ layout: default
 <main class="post-page">
   <article class="post-article">
     <header class="post-header">
+      {% if page.parent %}
+        {% for p in site.posts %}
+          {% assign p_id = p.date | date: "%Y-%m-%d" | append: "-" | append: p.slug %}
+          {% if p_id == page.parent %}
+          <div class="post-parent-link">
+            <span lang-en>Part of: </span><span lang-cn>隶属于：</span>
+            <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+          </div>
+          {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
       <div class="post-date">{{ page.date | date: "%B %d, %Y" }}</div>
-      <h1 class="post-title">{{ page.title }}</h1>
+      <h1 class="post-title">
+        {% if page.category == "experience" %}
+        <span class="post-category-badge">
+          <span lang-en>Experience</span><span lang-cn>经验</span>
+        </span>
+        {% endif %}
+        {{ page.title }}
+      </h1>
       {% if page.tags %}
       <div class="post-tags">
         {% for tag in page.tags %}
@@ -17,8 +36,30 @@ layout: default
     <div class="post-body">
       {{ content }}
     </div>
+
+    {% assign current_id = page.date | date: "%Y-%m-%d" | append: "-" | append: page.slug %}
+    {% assign children = site.posts | where: "parent", current_id %}
+    {% if children.size > 0 %}
+    <div class="post-children">
+      <h3>
+        <span lang-en>Sub-entries</span>
+        <span lang-cn>子日志</span>
+      </h3>
+      <ul class="child-list">
+        {% for child in children %}
+        <li>
+          <span class="date">{{ child.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </article>
   <div class="post-nav">
-    <a href="{{ '/blog' | relative_url }}">← Back to all posts</a>
+    <a href="{{ '/blog' | relative_url }}">
+      <span lang-en>&larr; Back to all posts</span>
+      <span lang-cn>&larr; 返回全部日志</span>
+    </a>
   </div>
 </main>
