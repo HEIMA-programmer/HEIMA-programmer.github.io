@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ page.title | default: site.title }}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='8' fill='%23334155'/><text x='32' y='44' font-family='serif' font-size='36' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>" />
+  {% seo %}
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
@@ -33,10 +35,22 @@
   </div>
 </nav>
 
+{% if page.url == "/" and site.data.news.size > 0 %}
+{% assign latest = site.data.news[0] %}
+<div class="news-bar">
+  <span class="news-date">{{ latest.date }}</span>
+  <span lang-en>{{ latest.en }}</span>
+  <span lang-cn>{{ latest.cn }}</span>
+</div>
+{% endif %}
+
 {{ content }}
 
 <footer>
   © {{ site.time | date: "%Y" }} Yanbin Xu · Central South University · Powered by Jekyll & GitHub Pages
+  <br>
+  <span lang-en>Last updated: {{ site.time | date: "%B %Y" }}</span>
+  <span lang-cn>最近更新：{{ site.time | date: "%Y年%m月" }}</span>
 </footer>
 
 <script>

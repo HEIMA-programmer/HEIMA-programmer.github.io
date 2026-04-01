@@ -88,6 +88,21 @@ nav {
   border-color: var(--accent) !important;
 }
 
+/* ══ News Bar ══ */
+.news-bar {
+  max-width: 860px; margin: 0 auto;
+  padding: 0.45rem 2rem;
+  font-size: 0.82rem;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  text-align: center; color: var(--text);
+}
+.news-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--accent);
+  margin-right: 0.5rem; font-weight: 600;
+}
+
 /* ══ Hero ══ */
 .hero {
   max-width: 860px; margin: 0 auto;
