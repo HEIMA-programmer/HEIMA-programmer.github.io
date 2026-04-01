@@ -152,9 +152,13 @@ title: "Yanbin Xu · Personal Academic Homepage"
       <span lang-en>Research Log</span>
       <span lang-cn>科研日志</span>
     </h2>
-    {% assign daily = site.posts | where_exp: "p", "p.category != 'experience' and p.parent == nil" %}
     <ul class="blog-list">
-      {% for post in daily limit:5 %}
+      {% assign daily_count = 0 %}
+      {% for post in site.posts %}
+      {% if post.category == "experience" %}{% continue %}{% endif %}
+      {% if post.parent %}{% continue %}{% endif %}
+      {% if daily_count >= 5 %}{% break %}{% endif %}
+      {% assign daily_count = daily_count | plus: 1 %}
       <li class="blog-entry">
         <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <div>

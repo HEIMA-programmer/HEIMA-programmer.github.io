@@ -41,15 +41,15 @@ title: "Research Log"
   {% endif %}
 
   <!-- ═══ Section 2: Daily Research Logs ═══ -->
-  {% assign daily_parents = site.posts | where_exp: "post", "post.category != 'experience' and post.parent == nil" %}
   <div class="log-section">
     <h2 class="section-heading">
       <span lang-en>Daily Research Log</span>
       <span lang-cn>日常科研日志</span>
     </h2>
-    {% if daily_parents.size > 0 %}
     <ul class="blog-list daily-list">
-      {% for post in daily_parents %}
+      {% for post in site.posts %}
+      {% if post.category == "experience" %}{% continue %}{% endif %}
+      {% if post.parent %}{% continue %}{% endif %}
       {% assign parent_id = post.date | date: "%Y-%m-%d" | append: "-" | append: post.slug %}
       {% assign children = site.posts | where: "parent", parent_id %}
       <li class="blog-entry parent-entry">
@@ -86,10 +86,9 @@ title: "Research Log"
       </li>
       {% endfor %}
     </ul>
-    {% endif %}
   </div>
 
-  {% if experience_posts.size == 0 and daily_parents.size == 0 %}
+  {% if site.posts.size == 0 %}
   <p style="color:var(--muted); margin-top:2rem;">
     <span lang-en>No posts yet. Add your first post to <code>_posts/</code>!</span>
     <span lang-cn>还没有日志，去 <code>_posts/</code> 目录添加第一篇吧！</span>
