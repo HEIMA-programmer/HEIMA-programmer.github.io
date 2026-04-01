@@ -425,8 +425,15 @@ h2 {
 
 .post-body img { max-width: 100%; border-radius: 6px; margin: 1rem 0; }
 
+.post-follow {
+  margin-top: 2rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem; color: var(--muted);
+}
+.post-follow a { color: var(--accent); font-weight: 500; }
+
 .post-nav {
-  margin-top: 2rem; padding-top: 1.2rem;
+  margin-top: 1rem; padding-top: 1.2rem;
   border-top: 1px solid var(--border);
 }
 .post-nav a { font-size: 0.88rem; color: var(--muted); }
@@ -479,16 +486,28 @@ h2 {
 .children-toggle summary::before { content: '\25B8  '; }
 .children-toggle[open] summary::before { content: '\25BE  '; }
 
-/* ── Follow Button ── */
+/* ── Follow Form ── */
+.follow-form {
+  display: flex; gap: 0.5rem; align-items: center;
+  margin-top: 0.8rem;
+}
+.follow-input {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.82rem; padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border); border-radius: 3px;
+  background: var(--bg); color: var(--text);
+  outline: none; width: 200px;
+}
+.follow-input:focus { border-color: var(--accent); }
 .follow-btn {
-  display: inline-block; margin-left: 0.8rem;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.78rem; font-weight: 600;
-  padding: 0.25rem 0.7rem; border-radius: 3px;
+  padding: 0.35rem 0.75rem; border-radius: 3px;
   background: var(--accent); color: #fff;
-  text-decoration: none; vertical-align: middle;
+  border: none; cursor: pointer;
   transition: opacity 0.15s;
 }
-.follow-btn:hover { opacity: 0.85; color: #fff; }
+.follow-btn:hover { opacity: 0.85; }
 
 /* ── Post Layout Additions ── */
 .post-parent-link {
