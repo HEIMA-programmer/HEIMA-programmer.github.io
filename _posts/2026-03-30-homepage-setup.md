@@ -4,6 +4,7 @@ title: "Setting up my academic homepage"
 tags: [meta, tools]
 ---
 
+
 Finally set up a personal academic homepage using Jekyll + GitHub Pages. The goal is to have a clean, low-maintenance site where I can also keep a research log.
 
 ## Why bother?
