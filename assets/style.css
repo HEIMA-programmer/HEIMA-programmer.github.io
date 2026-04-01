@@ -479,6 +479,17 @@ h2 {
 .children-toggle summary::before { content: '\25B8  '; }
 .children-toggle[open] summary::before { content: '\25BE  '; }
 
+/* ── Follow Button ── */
+.follow-btn {
+  display: inline-block; margin-left: 0.8rem;
+  font-size: 0.78rem; font-weight: 600;
+  padding: 0.25rem 0.7rem; border-radius: 3px;
+  background: var(--accent); color: #fff;
+  text-decoration: none; vertical-align: middle;
+  transition: opacity 0.15s;
+}
+.follow-btn:hover { opacity: 0.85; color: #fff; }
+
 /* ── Post Layout Additions ── */
 .post-parent-link {
   font-size: 0.84rem; color: var(--muted); margin-bottom: 0.5rem;
