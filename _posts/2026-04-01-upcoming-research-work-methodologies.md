@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Research Methodologies of identifying the research question (first 2–3 weeks)"
-tags: [reflection, skills]
+tags: [skills]
 category: experience
 ---
 
