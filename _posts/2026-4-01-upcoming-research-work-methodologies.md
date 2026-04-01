@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Discussion of Future Research and Related Research Methodologies"
+title: "A Discussion of Future Research and Research Methodologies of identifying the research question (first 2–3 weeks)"
 tags: [reflection, skills]
 category: experience
 ---
