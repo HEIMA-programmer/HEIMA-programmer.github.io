@@ -35,12 +35,17 @@
   </div>
 </nav>
 
-{% if page.url == "/" and site.data.news.size > 0 %}
-{% assign latest = site.data.news[0] %}
+{% if page.url == "/" and site.posts.size > 0 %}
 <div class="news-bar">
-  <span class="news-date">{{ latest.date }}</span>
-  <span lang-en>{{ latest.en }}</span>
-  <span lang-cn>{{ latest.cn }}</span>
+  <span class="news-label">New</span>
+  <div class="news-ticker">
+    {% for post in site.posts limit:3 %}
+    <a class="news-item" href="{{ post.url | relative_url }}">
+      <span class="news-date">{{ post.date | date: "%Y-%m" }}</span>
+      {{ post.title }}
+    </a>
+    {% endfor %}
+  </div>
 </div>
 {% endif %}
 

@@ -95,12 +95,35 @@ nav {
   font-size: 0.82rem;
   background: color-mix(in srgb, var(--accent) 8%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
-  text-align: center; color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.6rem; overflow: hidden; height: 1.8rem;
 }
+.news-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: #fff;
+  background: var(--accent); padding: 0.1rem 0.4rem;
+  border-radius: 2px; flex-shrink: 0;
+}
+.news-ticker {
+  overflow: hidden; height: 1.4rem; position: relative;
+}
+.news-item {
+  display: block; height: 1.4rem; line-height: 1.4rem;
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
+  color: var(--text); text-decoration: none;
+  animation: ticker 9s ease-in-out infinite;
+}
+.news-item:hover { color: var(--accent); }
 .news-date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem; color: var(--accent);
-  margin-right: 0.5rem; font-weight: 600;
+  margin-right: 0.4rem; font-weight: 600;
+}
+@keyframes ticker {
+  0%, 28%   { transform: translateY(0); }
+  33%, 61%  { transform: translateY(-1.4rem); }
+  66%, 94%  { transform: translateY(-2.8rem); }
+  100%      { transform: translateY(0); }
 }
 
 /* ══ Hero ══ */
