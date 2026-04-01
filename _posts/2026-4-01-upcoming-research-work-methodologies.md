@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "A Discussion of Future Research and Research Methodologies of identifying the research question (first 2–3 weeks)"
+title: "Research Methodologies of identifying the research question (first 2–3 weeks)"
 tags: [reflection, skills]
 category: experience
 ---
 
 
-Over the coming period, I will be conducting research on **RNA-small molecule binding affinity prediction**. Gaining an **understanding** of the field and identifying **research gaps** are crucial during the initial phase of literature review.
+Over the coming period, I will be conducting research on **RNA-small molecule binding affinity prediction**. Gaining an **understanding** of the field and identifying **research gaps** are crucial during the initial phase of literature review (first 2–3 weeks).
 
 ### **Step 1: Gain an Understanding of the Field**
 
